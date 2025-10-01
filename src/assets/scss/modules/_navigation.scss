@@ -1,0 +1,94 @@
+// Navigation breakpoints
+.mobile-menu,
+.site-title-bar {
+  @include hide-for(medium);
+}
+
+//
+.desktop-menu,
+.top-bar{
+  @include show-for(medium);
+}
+
+// Site title
+.site-desktop-title a {
+  font-weight: bold;
+}
+
+// WP post navigation
+.post-navigation {
+  @include clearfix;
+}
+
+.nav-previous {
+  float: left;
+}
+
+.nav-next {
+  float: right;
+}
+
+// Title Bar
+.title-bar{
+  @include flex-align($x:center, $y:top);
+.title-bar-center {
+  flex: 2;
+  img{width:100%;}
+}
+.title-bar-left, .title-bar-right {
+  flex: 1;
+  img{width:100%;}
+}
+}
+// Top Bar
+.top-bar {
+  .top-bar-inner-container {
+    @include xy-cell(12);
+    @include xy-grid;
+    @include flex-align($x:center, $y:middle);
+    &.contained {@include xy-grid-container();}
+
+    .top-bar-left,
+    .top-bar-center,
+    .top-bar-right {
+      flex: 1;
+      img{
+        max-width: 16rem;
+      padding: $global-padding}
+    }
+
+    .top-bar-center {
+      text-align: center;
+     
+    }
+
+    .top-bar-right {
+      text-align: right;
+    }
+  }
+}
+
+.sticky-container {
+  z-index: 99;
+  .sticky{
+    width: 100%;
+  }
+  .sticky.is-anchored{
+    position: fixed;
+    width: 100%;
+    max-width: 100vw !important;
+  }
+  .sticky.is-stuck{
+    max-width: 100vw !important;
+  }
+}
+
+.fixed-header{
+  position: fixed;
+  width:100%;
+  right: 0;
+  left: 0;
+  backface-visibility: hidden;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}

@@ -1,0 +1,14 @@
+{
+    "name": "acf/accordion",
+    "title": "Accordion",
+    "description": "Accordion drop down",
+    "style": [ "file:./dist/assets/css/editor.css" ],
+    "category": "avidd-blocks",
+    "icon": "plus-alt",
+    "keywords": ["accordion"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "template-parts/blocks/accordion.php"
+    },
+    "align": "full"
+}
