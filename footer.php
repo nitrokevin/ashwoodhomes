@@ -7,16 +7,16 @@
  * @package FoundationPress
  * @since FoundationPress 1.0.0
  */
-$footer_phone = get_theme_mod('footer_phone_number');
-$footer_email = get_theme_mod('footer_email');
+$contact_phone = get_theme_mod('contact_phone_number');
+$contact_email = get_theme_mod('contact_email');
 $footer_company_number = get_theme_mod('footer_company_number');
 $footer_copyright = get_theme_mod('footer_copyright');
-$footer_address_1 = get_theme_mod('footer_address_1');
-$footer_address_2 = get_theme_mod('footer_address_2');
-$footer_address_3 = get_theme_mod('footer_address_3');
-$footer_address_4 = get_theme_mod('footer_address_4');
-$footer_address_5 = get_theme_mod('footer_address_5');
-$footer_address_6 = get_theme_mod('footer_address_6');
+$contact_address_1 = get_theme_mod('contact_address_1');
+$contact_address_2 = get_theme_mod('contact_address_2');
+$contact_address_3 = get_theme_mod('contact_address_3');
+$contact_address_4 = get_theme_mod('contact_address_4');
+$contact_address_5 = get_theme_mod('contact_address_5');
+$contact_address_6 = get_theme_mod('contact_address_6');
 $footer_background_image = get_theme_mod('footer_background_image');
 $site_name = get_bloginfo('name', 'display');
 
@@ -31,13 +31,13 @@ $socials = [
 ];
 
 $social_icons = [
-    'facebook' => 'fab fa-facebook-f fa-fw',
-    'x' => 'fab fa-x-twitter fa-fw',
-    'instagram' => 'fab fa-instagram fa-fw',
-    'linkedin' => 'fab fa-linkedin-in fa-fw',
-    'pinterest' => 'fab fa-pinterest fa-fw',
-    'youtube' => 'fab fa-youtube fa-fw',
-    'tiktok' => 'fab fa-tiktok fa-fw',
+    'facebook' => 'fa-brands fa-facebook-f fa-fw',
+    'x' => 'fa-brands fa-x-twitter fa-fw',
+    'instagram' => 'fa-brands fa-instagram fa-fw',
+    'linkedin' => 'fa-brands fa-linkedin-in fa-fw',
+    'pinterest' => 'fa-brands fa-pinterest fa-fw',
+    'youtube' => 'fa-brands fa-youtube fa-fw',
+    'tiktok' => 'fa-brands fa-tiktok fa-fw',
 ];
 
 if ($footer_background_image) {
@@ -61,13 +61,12 @@ if ($footer_background_image) {
             <section>
                 <?php foundationpress_footer_nav_l(); ?>
                 <ul class="footer-contact menu  footer-menu">
-                    <li><?php echo esc_html($footer_address_1); ?></li>
-                    <li><?php echo esc_html($footer_address_2); ?></li>
-                    <li><?php echo esc_html($footer_address_3); ?></li>
-                    <li><?php echo esc_html($footer_address_4); ?></li>
-                    <li><?php echo esc_html($footer_address_5); ?></li>
-                    <li><?php echo esc_html($footer_address_6); ?></li>
-                    <li>&copy; <?php echo esc_html($site_name) . ' ' . date('Y'); ?></li>
+                  <li><?php echo esc_html($contact_address_1); ?></li>
+                    <li><?php echo esc_html($contact_address_2); ?></li>
+                    <li><?php echo esc_html($contact_address_3); ?></li>
+                    <li><?php echo esc_html($contact_address_4); ?></li>
+                    <li><?php echo esc_html($contact_address_5); ?></li>
+                    <li><?php echo esc_html($contact_address_6); ?></li>
                 </ul>
 
             </section>
