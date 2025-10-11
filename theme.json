@@ -1,0 +1,184 @@
+{
+  "version": 3,
+  "settings": {
+    "color": {
+      "custom": false,
+      "customGradient": false,
+      "defaultPalette": false,
+      "palette": [
+        {
+          "slug": "primary",
+          "name": "Primary",
+          "color": "#1779ba"
+        },
+        {
+          "slug": "secondary",
+          "name": "Secondary",
+          "color": "#767676"
+        },
+        {
+          "slug": "success",
+          "name": "Success",
+          "color": "#3adb76"
+        },
+        {
+          "slug": "warning",
+          "name": "Warning",
+          "color": "#ffae00"
+        },
+        {
+          "slug": "alert",
+          "name": "Alert",
+          "color": "#cc4b37"
+        },
+        {
+          "slug": "light-gray",
+          "name": "Light-gray",
+          "color": "#e6e6e6"
+        },
+        {
+          "slug": "medium-gray",
+          "name": "Medium-gray",
+          "color": "#cacaca"
+        },
+        {
+          "slug": "dark-gray",
+          "name": "Dark-gray",
+          "color": "#8a8a8a"
+        },
+        {
+          "slug": "theme-color-1",
+          "name": "Theme-color-1",
+          "color": "#ADD6C2"
+        },
+        {
+          "slug": "theme-color-2",
+          "name": "Theme-color-2",
+          "color": "#525D8D"
+        },
+        {
+          "slug": "theme-color-3",
+          "name": "Theme-color-3",
+          "color": "#DEE8F1"
+        },
+        {
+          "slug": "theme-color-4",
+          "name": "Theme-color-4",
+          "color": "#8C3C40"
+        },
+        {
+          "slug": "white",
+          "name": "White",
+          "color": "#fefefe"
+        },
+        {
+          "slug": "black",
+          "name": "Black",
+          "color": "#0a0a0a"
+        }
+      ],
+      "gradients": [
+        {
+          "slug": "primary",
+          "name": "Primary Light → Dark",
+          "gradient": "linear-gradient(135deg, #3fa1e2, #005192)"
+        },
+        {
+          "slug": "secondary",
+          "name": "Secondary Light → Dark",
+          "gradient": "linear-gradient(135deg, #9e9e9e, #4e4e4e)"
+        },
+        {
+          "slug": "success",
+          "name": "Success Light → Dark",
+          "gradient": "linear-gradient(135deg, #62ff9e, #12b34e)"
+        },
+        {
+          "slug": "warning",
+          "name": "Warning Light → Dark",
+          "gradient": "linear-gradient(135deg, #ffd628, #d78600)"
+        },
+        {
+          "slug": "alert",
+          "name": "Alert Light → Dark",
+          "gradient": "linear-gradient(135deg, #f4735f, #a4230f)"
+        },
+        {
+          "slug": "light-gray",
+          "name": "Light-gray Light → Dark",
+          "gradient": "linear-gradient(135deg, #ffffff, #bebebe)"
+        },
+        {
+          "slug": "medium-gray",
+          "name": "Medium-gray Light → Dark",
+          "gradient": "linear-gradient(135deg, #f2f2f2, #a2a2a2)"
+        },
+        {
+          "slug": "dark-gray",
+          "name": "Dark-gray Light → Dark",
+          "gradient": "linear-gradient(135deg, #b2b2b2, #626262)"
+        },
+        {
+          "slug": "theme-color-1",
+          "name": "Theme-color-1 Light → Dark",
+          "gradient": "linear-gradient(135deg, #d5feea, #85ae9a)"
+        },
+        {
+          "slug": "theme-color-2",
+          "name": "Theme-color-2 Light → Dark",
+          "gradient": "linear-gradient(135deg, #7a85b5, #2a3565)"
+        },
+        {
+          "slug": "theme-color-3",
+          "name": "Theme-color-3 Light → Dark",
+          "gradient": "linear-gradient(135deg, #ffffff, #b6c0c9)"
+        },
+        {
+          "slug": "theme-color-4",
+          "name": "Theme-color-4 Light → Dark",
+          "gradient": "linear-gradient(135deg, #b46468, #641418)"
+        },
+        {
+          "slug": "primary-secondary",
+          "name": "Primary → Secondary",
+          "gradient": "linear-gradient(135deg, #1779ba, #767676)"
+        },
+        {
+          "slug": "secondary-theme-color-1",
+          "name": "Secondary → Theme-color-1",
+          "gradient": "linear-gradient(135deg, #767676, #ADD6C2)"
+        },
+        {
+          "slug": "primary-theme-color-1",
+          "name": "Primary → Theme-color-1",
+          "gradient": "linear-gradient(135deg, #1779ba, #ADD6C2)"
+        }
+      ],
+      "defaultGradients": false
+    },
+    "core": {
+      "gradients": false
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "slug": "base",
+          "name": "Base",
+          "fontFamily": "'Nunito Sans', Helvetica, Roboto, Arial, sans-serif"
+        },
+        {
+          "slug": "mono",
+          "name": "Monospace",
+          "fontFamily": "Consolas, 'Liberation Mono', Courier, monospace"
+        }
+      ]
+    },
+    "border": {
+      "radius": "0.5rem"
+    },
+    "layout": {
+      "contentSize": "1000px",
+      "wideSize": "1200px"
+    }
+  }
+}

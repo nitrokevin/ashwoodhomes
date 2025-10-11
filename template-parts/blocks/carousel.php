@@ -23,11 +23,36 @@ if( !empty($block['className']) ) {
 if( !empty($block['align']) ) {
     $className .= ' align' . $block['align'];
 }
+
+// Color + gradient support.
+$style = '';
+$classes = [];
+
+if (!empty($block['backgroundColor'])) {
+    $classes[] = 'has-background';
+    $classes[] = 'has-' . esc_attr($block['backgroundColor']) . '-background-color';
+    $style .= 'background-color: var(--wp--preset--color--' . esc_attr($block['backgroundColor']) . ');';
+}
+
+if (!empty($block['gradient'])) {
+    $classes[] = 'has-background';
+    $classes[] = 'has-' . esc_attr($block['gradient']) . '-gradient-background';
+    $style .= 'background: var(--wp--preset--gradient--' . esc_attr($block['gradient']) . ');';
+}
+
+if (!empty($block['textColor'])) {
+    $classes[] = 'has-text-color';
+    $classes[] = 'has-' . esc_attr($block['textColor']) . '-color';
+    $style .= 'color: var(--wp--preset--color--' . esc_attr($block['textColor']) . ');';
+}
+
+$className .= ' ' . implode(' ', $classes);
+
 $carousel_type = get_field('carousel_type');
-$section_background = get_field('section_background');
+
 
 ?>
-<section id="<?php echo esc_attr($id); ?>" class="wp-block <?php echo esc_attr($className); ?>  <?php echo $carousel_type; ?>   <?php echo $section_background; ?> " >
+<section id="<?php echo esc_attr($id); ?>" class="wp-block <?php echo esc_attr($className); ?> <?php echo $carousel_type; ?>">
     <div class="block-carousel-container "> 
 		<div class="block-carousel-grid" >
 			<div class="block-carousel-content" >

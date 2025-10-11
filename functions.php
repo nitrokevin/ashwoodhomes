@@ -55,7 +55,10 @@ require_once( 'library/sticky-posts.php' );
 require_once( 'library/responsive-images.php' );
 
 /** Gutenberg editor support */
-require_once( 'library/gutenberg.php' );
+// require_once( 'library/gutenberg.php' );
+
+/** Colors helper  support */
+require_once( 'library/colors.php' );
 
 /** Custom functions */
 require_once( 'library/custom-functions.php' );

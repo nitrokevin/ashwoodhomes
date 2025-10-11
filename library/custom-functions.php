@@ -48,6 +48,18 @@ function custom_block_categories($categories) {
 }
 add_action('block_categories_all', 'custom_block_categories', 10, 2);
 
+
+//Custom alignment for columns
+add_action( 'init', function() {
+    register_block_style(
+        'core/columns',
+        array(
+            'name'  => 'full-bleed',
+            'label' => __( 'Full Bleed', 'foundationpress' ),
+        )
+    );
+});
+
 /**
  * Automatically generate unique anchors for ACF blocks
  */
@@ -207,3 +219,4 @@ function avidd_social_links_inline_shortcode($atts) {
     return implode(' ', $links);
 }
 add_shortcode('social_links', 'avidd_social_links_inline_shortcode');
+

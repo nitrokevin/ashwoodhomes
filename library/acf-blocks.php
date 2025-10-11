@@ -1,9 +1,5 @@
 <?php
-include 'colors.php';
-$color_array = [];
-foreach ($colors as $name => $hex) {
-    $color_array[$hex] = $name;
-}
+
 if( function_exists('acf_register_block_type') ) {
 add_action('acf/init', 'my_acf_init_block_types');
 function my_acf_init_block_types() {
@@ -59,13 +55,17 @@ acf_add_local_field_group(array(
                 'class' => '',
                 'id' => '',
             ),
-            'choices' => $color_array,
+           'choices' => get_theme_design_choices([
+    'include_colors'   => true,
+    'include_gradients' => false,
+    'key' => 'color', // return HEX as key for editor
+]),
             'allow_null' => 1,
             'default_value' => array(
                 0 => '#fefefe',
             ),
             'layout' => 'horizontal',
-            'return_format' => 'label',
+           'return_format' => 'value',
             'other_choice' => 0,
             'save_other_choice' => 0,
         ),
@@ -108,11 +108,15 @@ acf_add_local_field_group(array(
                 'class' => '',
                 'id' => '',
             ),
-            'choices' => $color_array,
+           'choices' => get_theme_design_choices([
+    'include_colors'   => true,
+    'include_gradients' => false,
+    'key' => 'color', // return HEX as key for editor
+]),
             'allow_null' => 1,
             'default_value' => '',
             'layout' => 'horizontal',
-            'return_format' => 'label',
+            'return_format' => 'value',
             'other_choice' => 0,
             'save_other_choice' => 0,
         ),
@@ -292,11 +296,15 @@ acf_add_local_field_group(array(
                 'class' => '',
                 'id' => '',
             ),
-            'choices' => $color_array,
+           'choices' => get_theme_design_choices([
+    'include_colors'   => true,
+    'include_gradients' => false,
+    'key' => 'color', // return HEX as key for editor
+]),
             'allow_null' => 1,
             'default_value' => '',
             'layout' => 'horizontal',
-            'return_format' => 'label',
+            'return_format' => 'value',
             'other_choice' => 0,
             'save_other_choice' => 0,
         ),
@@ -503,27 +511,7 @@ acf_add_local_field_group(array(
             'ajax' => 0,
             'placeholder' => '',
         ),
-        array(
-            'key' => 'field_626db2h7e738c3',
-            'label' => 'Accordion background colour',
-            'name' => 'accordion_background_color',
-            'type' => 'swatch',
-            'instructions' => '',
-            'required' => 0,
-            'conditional_logic' => 0,
-            'wrapper' => array(
-                'width' => '',
-                'class' => '',
-                'id' => '',
-            ),
-            'choices' => $color_array,
-            'allow_null' => 1,
-            'default_value' => '',
-            'layout' => 'horizontal',
-            'return_format' => 'label',
-            'other_choice' => 0,
-            'save_other_choice' => 0,
-        ),
+  
        
         array(
             'key' => 'field_626db2f7738c7',
@@ -584,11 +572,15 @@ acf_add_local_field_group(array(
                         'class' => '',
                         'id' => '',
                     ),
-                    'choices' => $color_array,
+                   'choices' => get_theme_design_choices([
+    'include_colors'   => true,
+    'include_gradients' => false,
+    'key' => 'color', // return HEX as key for editor
+]),
                     'allow_null' => 1,
                     'default_value' => '',
                     'layout' => 'horizontal',
-                    'return_format' => 'label',
+                    'return_format' => 'value',
                     'other_choice' => 0,
                     'save_other_choice' => 0,
                 ),
@@ -640,27 +632,7 @@ acf_add_local_field_group(array(
 	'key' => 'group_622b3632877723',
 	'title' => 'Block: Tab',
 	'fields' => array(
-        array(
-                'key' => 'field_626dcf6a205d4',
-                'label' => 'Section background colour',
-                'name' => 'section_background_color',
-                'type' => 'swatch',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'choices' => $color_array,
-                'allow_null' => 1,
-                'default_value' => '',
-                'layout' => 'horizontal',
-                'return_format' => 'label',
-                'other_choice' => 0,
-                'save_other_choice' => 0,
-            ),
+      
         array(
                 'key' => 'field_626da7410655fg',
                 'label' => 'Tab Bar Background Colour',
@@ -674,11 +646,15 @@ acf_add_local_field_group(array(
                     'class' => '',
                     'id' => '',
                 ),
-                'choices' => $color_array,
+               'choices' => get_theme_design_choices([
+    'include_colors'   => true,
+    'include_gradients' => false,
+    'key' => 'color', // return HEX as key for editor
+]),
                 'allow_null' => 1,
                 'default_value' => '',
                 'layout' => 'horizontal',
-                'return_format' => 'label',
+                'return_format' => 'value',
                 'other_choice' => 0,
                 'save_other_choice' => 0,
             ),
@@ -733,11 +709,15 @@ acf_add_local_field_group(array(
                             'class' => '',
                             'id' => '',
                         ),
-                        'choices' => $color_array,
+                       'choices' => get_theme_design_choices([
+    'include_colors'   => true,
+    'include_gradients' => false,
+    'key' => 'color', // return HEX as key for editor
+]),
                         'allow_null' => 1,
                         'default_value' => '',
                         'layout' => 'horizontal',
-                        'return_format' => 'label',
+                        'return_format' => 'value',
                         'other_choice' => 0,
                         'save_other_choice' => 0,
                     ),
@@ -818,30 +798,6 @@ acf_add_local_field_group(array(
     'placeholder' => '',
     ),
 
-
-    array(
-    'key' => 'field_5d49aea9131e31',
-    'label' => 'Section background',
-    'name' => 'section_background',
-    'type' => 'swatch',
-    'instructions' => '',
-    'required' => 0,
-    'conditional_logic' => 0,
-    'wrapper' => array(
-        'width' => '',
-        'class' => '',
-        'id' => '',
-    ),
-    'choices' => $color_array,
-    'allow_null' => 1,
-    'default_value' => array(
-        0 => '#fefefe',
-    ),
-    'layout' => 'horizontal',
-    'return_format' => 'label',
-    'other_choice' => 0,
-    'save_other_choice' => 0,
-    ),
     
       
          array(
@@ -984,11 +940,17 @@ acf_add_local_field_group(array(
                 'class' => '',
                 'id' => '',
             ),
-            'choices' => $color_array,
+            // Compose swatch choices with gradients and colors, fallback to black if none found
+            'choices' => get_theme_design_choices([
+    'include_colors'   => true,
+    'include_gradients' => false,
+    'for_acf' => true,
+    'use_css_value' => true,
+]),
             'allow_null' => 1,
             'default_value' => '',
             'layout' => 'horizontal',
-            'return_format' => 'label',
+            'return_format' => 'value',
             'other_choice' => 0,
             'save_other_choice' => 0,
         ),

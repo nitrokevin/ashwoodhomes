@@ -8,7 +8,7 @@
 @import 'foundation';
 @import 'settings';
 
-@import "global/blocks";
+@import "global/gutenberg";
 @import "global/colors";
 @import "components/accordion";
 @import "components/tab";
@@ -95,6 +95,12 @@ body {
 .wp-block-table td{
 	border: none;
 }
+/** === columns === */
+.wp-block-columns.is-style-full-bleed .wp-block-column:first-child::before,
+.wp-block-columns.is-style-full-bleed .wp-block-column:last-child::before {
+  z-index: 0 !important;
+}
+
 
 /** === Latest Posts grid view === */
 .wp-block-latest-posts.is-grid{
