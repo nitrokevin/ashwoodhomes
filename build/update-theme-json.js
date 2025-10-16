@@ -54,11 +54,14 @@ const colors = match[1]
     };
   });
 
-// Remove duplicate slugs (from SCSS)
+// Exclude unwanted colors from palette and gradients
+const excludedSlugs = new Set(["success", "warning", "alert"]);
+
+// Remove duplicate slugs (from SCSS) and exclude unwanted colors
 const uniqueColors = [];
 const seenColorSlugs = new Set();
 colors.forEach(c => {
-  if (!seenColorSlugs.has(c.slug)) {
+  if (!seenColorSlugs.has(c.slug) && !excludedSlugs.has(c.slug)) {
     uniqueColors.push(c);
     seenColorSlugs.add(c.slug);
   }

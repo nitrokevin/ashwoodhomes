@@ -160,12 +160,45 @@ $settings in $all-gradients {
 .wp-block-columns.is-style-full-bleed {
   position: relative;
   gap: 0;
+  .wp-block-column{
+      position: relative;
+      padding: $global-padding 0;
+  }
 
-  .wp-block-column {
-    position: relative;
-    padding: $global-padding 0;
+  .wp-block-column.has-background-image {
+
     background: transparent; // column itself transparent
+    
+       &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+         margin-left: calc(50% - 50vw);
+         width: 100vw;
+         min-height: 25rem;
+        height: 100%;
+        z-index: -1;
+             background: var(--column-bg);
+             background-size: cover;
+             background-position: center;
+             background-repeat: no-repeat;
+       }
+        &:last-child::before {
+          left: auto;
+          right: 0;
+          margin-right: calc(50% - 50vw);
 
+          @include breakpoint(medium) {
+            margin-right: calc(100% - 50vw);
+            width: 50vw;
+          }
+
+          @include breakpoint(large) {
+            margin-right: calc(100% - 50vw);
+            width: 50vw;
+          }
+        }
     @include breakpoint(medium) {
       padding: $global-padding;
     }

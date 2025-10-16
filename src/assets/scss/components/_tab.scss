@@ -1,8 +1,10 @@
 
 .block-tab{
-	margin-left: calc( -50vw + 50% );
-	margin-right: calc( -50vw  + 50%  );
-	max-width: 100vw;
+	  &.has-background {
+	    margin-left: calc(-50vw + 50%);
+	    margin-right: calc(-50vw + 50%);
+	    max-width: 100vw;
+	  }
 	padding-left: 0;
 	padding-right: 0;
 	&.alignfull{

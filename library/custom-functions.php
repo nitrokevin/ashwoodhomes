@@ -75,41 +75,73 @@ add_filter('acf/pre_save_block', 'set_unique_acf_block_anchor');
 // TINYMCE CUSTOMISATIONS
 // ------------------------------------------------------------
 
+
 add_filter('tiny_mce_before_init', 'customise_tinymce');
 
 function customise_tinymce($init) {
     // Always paste as plain text
     $init['paste_as_text'] = true;
 
-    // Load custom colour palette
-    $colors = [];
-    if (file_exists(get_template_directory() . '/colors.php')) {
-        include get_template_directory() . '/colors.php';
-        if (!is_array($colors)) {
-            $colors = [];
+    // Load custom colour palette via helper (returns ['#hex' => 'Name', ...])
+    $default_colours = [];
+
+    if ( function_exists( 'get_theme_design_choices' ) ) {
+        $choices = get_theme_design_choices([
+            'include_colors'    => true,
+            'include_gradients' => false,
+            'key'               => 'color', // we want HEX keys for the editor
+            'for_acf'           => false,   // not needed here
+        ]);
+
+        if (is_array($choices) && count($choices)) {
+            foreach ($choices as $key => $label) {
+                // $key should be a HEX like '#ffffff'
+                if (!is_string($key)) {
+                    continue;
+                }
+                $hex = trim($key);
+                if (strtolower($hex) === 'transparent') {
+                    continue;
+                }
+                // guard: only include hex values that start with #
+                if (strpos($hex, '#') !== 0) {
+                    continue;
+                }
+                $default_colours[] = '"' . ltrim($hex, '#') . '"';
+                $default_colours[] = '"' . esc_js($label) . '"';
+            }
         }
     }
 
-    $default_colours = [];
-    foreach ($colors as $name => $hex) {
-        if (strtolower($hex) === 'transparent') continue;
-        $label = ucwords(str_replace(['-', '_'], ' ', $name));
-        $default_colours[] = '"' . ltrim($hex, '#') . '"';
-        $default_colours[] = '"' . $label . '"';
+    // fallback: if no colours found, use a single neutral so editor won't fall back to core defaults
+    if (empty($default_colours)) {
+        $default_colours[] = '"000000"';
+        $default_colours[] = '"Black"';
     }
+
     $init['textcolor_map'] = '[' . implode(', ', $default_colours) . ']';
 
     // Add custom style formats
     $init['style_formats'] = json_encode([
         [
-            'title' => 'Standard Button main colour',
+            'title' => 'Primary Button',
             'selector' => 'a',
-            'classes' => 'button hollow',
+            'classes' => 'button',
+        ],
+          [
+            'title' => 'Secondary button',
+            'selector' => 'a',
+            'classes' => 'button secondary',
         ],
         [
-            'title' => 'Standard Button secondary colour',
+            'title' => 'Theme color 1 button',
             'selector' => 'a',
-            'classes' => 'button hollow secondary',
+            'classes' => 'button theme-color-1',
+        ],
+        [
+            'title' => 'Theme color 2 button',
+            'selector' => 'a',
+            'classes' => 'button theme-color-2',
         ],
     ]);
 
@@ -219,4 +251,3 @@ function avidd_social_links_inline_shortcode($atts) {
     return implode(' ', $links);
 }
 add_shortcode('social_links', 'avidd_social_links_inline_shortcode');
-
