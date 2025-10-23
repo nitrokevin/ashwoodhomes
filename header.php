@@ -13,7 +13,7 @@ $header_logo   = esc_url(get_theme_mod('header_logo'));
 $sticky_header = get_theme_mod('sticky_header', true);
 $fixed_header  = get_theme_mod('fixed_header', true);
 $contained     = get_theme_mod('contained_header', true);
-$mobile_layout = get_theme_mod('foundationpress_mobile_menu_layout');
+
 ?>
 <!doctype html>
 <html class="no-js" <?php language_attributes(); ?> >
@@ -23,18 +23,9 @@ $mobile_layout = get_theme_mod('foundationpress_mobile_menu_layout');
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-
-
-<?php
-// Get and normalize mobile menu layout from Customizer
-$mobile_layout = get_theme_mod('wpt_mobile_menu_layout', 'offcanvas'); // default to offcanvas
-$mobile_layout_normalized = str_replace('-', '', strtolower($mobile_layout));
-echo '<!-- Mobile layout: ' . esc_html($mobile_layout) . ' -->';
-
-if ( $mobile_layout_normalized === 'offcanvas' ) :
-    get_template_part( 'template-parts/mobile-off-canvas' );
-endif;
-?>
+<?php if (get_theme_mod('wpt_mobile_menu_layout') === 'offcanvas') : ?>
+		<?php get_template_part( 'template-parts/mobile-off-canvas' ); ?>
+	<?php endif; ?>
 
 <?php if ( $sticky_header ) : ?>
 <div data-sticky-container class="<?php echo ($fixed_header && has_post_thumbnail()) ? 'fixed-header' : ''; ?>">

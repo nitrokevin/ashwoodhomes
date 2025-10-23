@@ -17,7 +17,7 @@ if ( has_post_thumbnail( $post->ID ) ) :
             <div class="tagline">
                 <h1><?php echo esc_html( get_bloginfo( 'name' ) ); ?> community feedback hub</h1>
                 <p class="subheader"><?php echo esc_html( get_bloginfo( 'description' ) ); ?></p>
-                <a href="" class="button large secondary">Have your say</a>
+                 <a href="<?php echo esc_url( get_theme_mod( 'global_link' ) ); ?>" class="button large secondary">Have your say</a>
             </div>
         </div>
              </div>
