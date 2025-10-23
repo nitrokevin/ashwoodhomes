@@ -1,3 +1,8 @@
+html,
+body {
+  overflow-x: hidden;
+}
+
 .main-container {
   @include xy-grid-container;
 }
@@ -54,4 +59,42 @@
 }
 .grecaptcha-badge { 
   visibility: hidden;
+}
+
+.global-content-columns{
+   background-color:$primary-color;
+   border-radius: $global-radius;
+   margin-bottom: $global-margin;
+  .global-content-column-first{
+    display: flex;
+    flex-direction: column;
+    padding: $global-padding;
+    color: $white;
+    height: auto;
+    @include breakpoint(medium){
+     padding: $global-padding 0;
+    }
+    .bottom-line{
+        margin-top: auto;
+        /* pushes line to the bottom */
+        border: 0;
+        height: 4px;
+        /* line thickness */
+        background-color: $secondary-color;
+        margin-left: 0;
+        margin-right: auto;
+        width: 50%;
+    }
+   
+  }
+  .global-content-column-last{
+         padding: $global-padding;
+         background-color:$medium-gray;
+    border-radius: 0 0 $global-radius $global-radius;
+    @include breakpoint(medium) {
+    border-radius: 0 $global-radius $global-radius 0;
+    padding-right:8.333%;
+    }
+
+  }
 }

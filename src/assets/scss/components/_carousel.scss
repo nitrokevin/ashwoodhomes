@@ -5,11 +5,27 @@
   padding-right: 0;
 
   &.alignfull {
+    .block-carousel-container{
     .block-carousel-grid {
       margin-left: calc(-50vw + 50%);
       margin-right: calc(-50vw + 50%);
       max-width: 100vw;
+          .block-carousel-content {
+            width:100%;
+            margin:0;
+            .info{
+                @include xy-grid-container;
+
+                @each $breakpoint,
+                $size in $grid-margin-gutters {
+                  @include breakpoint($breakpoint) {
+                    padding: $global-padding $size;
+                  }
+                }
+              }
+          }
     }
+  }
   }
 
   .block-carousel-container {
@@ -61,24 +77,38 @@
     margin-left: 0;
 
     .swiper-slide {
-      .image {
-        padding-bottom: 120%;
+      height:auto;
+      position: relative;
+      &.has_background_image {
+         padding-bottom: 100%;
+@include breakpoint(medium) {
+  padding-bottom: 65%;
+}
+
+@include breakpoint(large) {
+  padding-bottom: 45%;
+}
+
+@include breakpoint(xlarge) {
+  padding-bottom: 35%;
+}
+        .swiper-slide-background {
+        position: absolute;
+        width:100%;
+        height:100%;
+       
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
 
-        @include breakpoint(medium) {
-          padding-bottom: 65%;
-        }
-
-        @include breakpoint(large) {
-          padding-bottom: 70%;
-        }
-
-        @include breakpoint(xlarge) {
-          padding-bottom: 60%;
-        }
       }
+      .info{
+        
+        width:auto;
+        height:auto;
+        padding:$global-padding*2 $global-padding;
+      }
+    }
     }
   }
 }
@@ -87,32 +117,7 @@
   width: 100%;
  
 }
-.left .slide-carousel {
-  .swiper-wrapper {
-    margin-left: 0;
 
-    .swiper-slide {
-      .image {
-        padding-bottom: 120%;
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-
-        @include breakpoint(medium) {
-          padding-bottom: 80%;
-        }
-
-        @include breakpoint(large) {
-          padding-bottom: 100%;
-        }
-
-        @include breakpoint(xlarge) {
-          padding-bottom: 100%;
-        }
-      }
-    }
-  }
-}
 
 .people-carousel.alignfull {
   margin-left: calc(-50vw + 50%);
@@ -182,49 +187,7 @@
       }
     }
 
-    .swiper-button-prev,
-    .swiper-button-next {
-      font-size: 3.5rem;
-
-      @include breakpoint(medium) {
-        font-size: 4.5rem;
-      }
-
-      color: $white;
-      background: unset;
-      opacity: 1;
-      position: absolute;
-      bottom: -0.5rem;
-      cursor: pointer;
-      z-index: 2;
-      line-height: 1;
-
-      svg {
-        fill: $secondary-color;
-      }
-
-      &.swiper-button-prev {
-        left: 40%;
-        transform: translateX(-50%);
-
-        @include breakpoint(medium) {
-          left: 46%;
-        }
-      }
-
-      &.swiper-button-next {
-        right: 40%;
-        transform: translateX(50%);
-
-        @include breakpoint(medium) {
-          right: 46%;
-
-          svg {
-            fill: $secondary-color;
-          }
-        }
-      }
-    }
+   
   }
 }
 
@@ -236,4 +199,11 @@
 }
 .swiper-slide{
   width:100% !important;
+}
+.swiper {
+  --swiper-theme-color: #{$white};
+  --swiper-pagination-bullet-size: 0.6rem;
+  --swiper-pagination-bullet-inactive-color:#{$medium-gray};
+
+
 }

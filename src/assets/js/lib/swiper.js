@@ -13,6 +13,7 @@ window.addEventListener('load', function () {
         swiperContainers.forEach(function (container) {
             const swiper = new Swiper(container, {
                 direction: 'horizontal',
+                parallax: true,
                 loop: true,
                   slidesPerView: 1,
                     spaceBetween: 0,
@@ -26,11 +27,13 @@ window.addEventListener('load', function () {
                     nextEl: container.querySelector('.swiper-button-next'),
                     prevEl: container.querySelector('.swiper-button-prev'),
                 },
-                autoplay: {
-                    delay: 4400,
-                    disableOnInteraction: false,
-                },
-                speed: 800,
+             
+                speed: 1600,
+                  on: {
+                    setTranslate(swiper, translate) {
+                      swiper.wrapperEl.style.transitionTimingFunction = 'cubic-bezier(0.5, 0, 0.3, 1)';
+                    },
+                  },
             });
 
             // Optional: Trigger an update to ensure correct sizing on load

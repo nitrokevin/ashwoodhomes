@@ -24,9 +24,18 @@ $mobile_layout = get_theme_mod('foundationpress_mobile_menu_layout');
 </head>
 <body <?php body_class(); ?>>
 
-<?php if ( $mobile_layout === 'offcanvas' ) : ?>
-	<?php get_template_part( 'template-parts/mobile-off-canvas' ); ?>
-<?php endif; ?>
+
+<?php
+// Get and normalize mobile menu layout from Customizer
+$mobile_layout = get_theme_mod('wpt_mobile_menu_layout', 'offcanvas'); // default to offcanvas
+$mobile_layout_normalized = str_replace('-', '', strtolower($mobile_layout));
+echo '<!-- Mobile layout: ' . esc_html($mobile_layout) . ' -->';
+
+if ( $mobile_layout_normalized === 'offcanvas' ) :
+    get_template_part( 'template-parts/mobile-off-canvas' );
+endif;
+?>
+
 <?php if ( $sticky_header ) : ?>
 <div data-sticky-container class="<?php echo ($fixed_header && has_post_thumbnail()) ? 'fixed-header' : ''; ?>">
 	<div data-sticky data-sticky-on="small" data-options="marginTop:0; z-index:100;">

@@ -8,18 +8,19 @@ if ( has_post_thumbnail( $post->ID ) ) :
     );
 
     $is_front = is_front_page();
-    $hero_class = $is_front ? 'front-hero' : 'featured-hero';
+    $hero_class = $is_front ? 'front-overlay-hero' : 'featured-hero';
     ?>
     <header class="<?php echo $hero_class; ?>"  data-interchange="[<?php echo $sizes['featured-small']; ?>, small], [<?php echo $sizes['featured-medium']; ?>, medium], [<?php echo $sizes['featured-large']; ?>, large], [<?php echo $sizes['featured-xlarge']; ?>, xlarge]" data-type="background">
         <?php if ( $is_front ) : ?>
-             <div class="marketing-container">
-        <div class="marketing">
-            <div class="tagline">
-                <h1><?php echo esc_html( get_bloginfo( 'name' ) ); ?> community feedback hub</h1>
-                <p class="subheader"><?php echo esc_html( get_bloginfo( 'description' ) ); ?></p>
-                <a href="" class="button large secondary">Have your say</a>
-            </div>
-        </div>
+             <div class="hero-overlay">
+                     <div class="hero-content">
+                        <h1><?php echo esc_html( get_bloginfo( 'name' ) ); ?> community feedback hub</h1>
+                        
+                        <a href="<?php echo esc_url( get_theme_mod( 'global_link' ) ); ?>" class="button large secondary">Have your say</a>
+                    </div>
+                    <div class="hero-tagline">
+                        <p class="subtitle"><?php echo esc_html( get_bloginfo( 'description' ) ); ?></p>    
+                    </div>
              </div>
         <?php endif; ?>
     </header>

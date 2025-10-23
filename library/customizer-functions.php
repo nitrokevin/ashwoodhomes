@@ -47,6 +47,7 @@ $sections = [
 	'site_footer_section'   => [ esc_html__( 'Site Footer', 'avidd' ), '' ],
 	'site_settings_section' => [ esc_html__( 'Site Settings', 'avidd' ), '' ],
 	'social_media_section'  => [ esc_html__( 'Social Media', 'avidd' ), '' ],
+	'global_links_section' => [ esc_html__( 'Global Links', 'avidd' ), '' ],
 ];
 
 foreach ( $sections as $section_id => $section ) {
@@ -62,14 +63,7 @@ foreach ( $sections as $section_id => $section ) {
 }
 
 
-new \Kirki\Section(
-	'opening_times',
-	[
-		'title'       => esc_html__( 'Opening Times', 'avidd' ),
-		'description' => esc_html__( '', 'avidd' ),
-		'priority'    => 20,
-	]
-);
+
 
 // Helper: get HEX default for a given SCSS variable or fallback.
 if ( ! function_exists( 'avidd_get_palette_hex_default' ) ) {
@@ -141,7 +135,7 @@ new \Kirki\Field\Color_Palette(
 		],
 		'output'      => [
 			[
-				'element'  => '.top-bar, .desktop-menu a, .mobile-menu a',
+				'element'  => '.top-bar, .desktop-menu a:not(.button), .mobile-menu a:not(.button)',
 				'property' => 'color',
 			],
 		],
@@ -500,24 +494,53 @@ new \Kirki\Field\Color_Palette(
 	]
 );
 
-new \Kirki\Field\Repeater(
+
+new \Kirki\Field\URL(
 	[
-		'settings' => 'opening_times',
-		'label'    => esc_html__( 'Opening Hours', 'avidd' ),
-		'section'  => 'opening_times',
-		'priority' => 11,
-		'fields'   => [
-			'day' =>[
-				'type'        => 'text',
-				'label'       => esc_html__( 'Day', 'avidd' ),
-			],
-			'hours'    => [
-				'type'        => 'text',
-				'label'       => esc_html__( 'Hours', 'avidd' ),
-			],
-		],
+		'settings'  => 'global_link',
+		'label'     => esc_html__( 'Global Link', 'avidd' ),
+		'section'   => 'global_links_section',
+		'default'   => '',
+		'priority'  => 10,
 	]
 );
+new \Kirki\Field\URL(
+	[
+		'settings'  => 'main_site_link',
+		'label'     => esc_html__( 'Main Site', 'avidd' ),
+		'section'   => 'global_links_section',
+		'default'   => '',
+		'priority'  => 10,
+	]
+);
+
+// Shortcode for global link
+function avidd_global_link_shortcode() {
+	return esc_url( get_theme_mod( 'global_link' ) );
+}
+add_shortcode( 'global_link', 'avidd_global_link_shortcode' );
+
+// Replace #global_link# in block and menu output
+add_filter( 'render_block', function( $block_content, $block ) {
+	if ( empty( $block_content ) ) {
+		return $block_content;
+	}
+	$global_link = esc_url( get_theme_mod( 'global_link' ) );
+	if ( $global_link ) {
+		$block_content = str_replace( '#global_link#', $global_link, $block_content );
+	}
+	return $block_content;
+}, 10, 2 );
+
+add_filter( 'nav_menu_link_attributes', function( $atts, $item, $args, $depth ) {
+	$global_link = esc_url( get_theme_mod( 'global_link' ) );
+	if ( isset( $atts['href'] ) && $atts['href'] === '#global_link#' && $global_link ) {
+		$atts['href'] = $global_link;
+	}
+	return $atts;
+}, 10, 4 );
+
+
 
 
 // CUSTOMIZER FOOTER CONTACT

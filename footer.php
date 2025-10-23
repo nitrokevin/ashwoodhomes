@@ -19,6 +19,8 @@ $contact_address_5 = get_theme_mod('contact_address_5');
 $contact_address_6 = get_theme_mod('contact_address_6');
 $footer_background_image = get_theme_mod('footer_background_image');
 $site_name = get_bloginfo('name', 'display');
+$home_url      = esc_url( get_theme_mod( 'main_site_link' ) );
+$header_logo   = esc_url(get_theme_mod('header_logo'));
 
 $socials = [
     'facebook' => get_theme_mod('social-facebook-url'),
@@ -54,23 +56,26 @@ if ($footer_background_image) {
 <footer class="footer" <?php if ($footer_background_image) { ?> data-interchange="[<?php echo esc_url($sizes['small']); ?>, small], [<?php echo esc_url($sizes['medium']); ?>, medium], [<?php echo esc_url($sizes['large']); ?>, large], [<?php echo esc_url($sizes['xlarge']); ?>, xlarge]" data-type="background"<?php } ?>>
     <div class="footer-container">
         <div class="footer-grid">
-            <?php dynamic_sidebar('footer-widgets'); ?>
-        </div>
-        <div class="footer-grid">
 
             <section>
                 <?php foundationpress_footer_nav_l(); ?>
-                <ul class="footer-contact menu  footer-menu">
-                  <li><?php echo esc_html($contact_address_1); ?></li>
-                    <li><?php echo esc_html($contact_address_2); ?></li>
-                    <li><?php echo esc_html($contact_address_3); ?></li>
-                    <li><?php echo esc_html($contact_address_4); ?></li>
-                    <li><?php echo esc_html($contact_address_5); ?></li>
-                    <li><?php echo esc_html($contact_address_6); ?></li>
-                </ul>
-
             </section>
             <section>
+                <a href="<?php echo $home_url; ?>" title="<?php echo esc_attr($site_name); ?>" rel="home">
+						<?php if ( $header_logo ) : ?>
+							<img src="<?php echo $header_logo; ?>" alt="<?php echo esc_attr($site_name); ?>">
+						<?php else : ?>
+							<?php echo esc_html($site_name); ?>
+						<?php endif; ?>
+					</a>
+                  <span class="footer-contact">
+                  <?php echo esc_html($contact_address_1); ?>
+                    <?php echo esc_html($contact_address_2); ?>
+                    <?php echo esc_html($contact_address_3); ?>
+                    <?php echo esc_html($contact_address_4); ?>
+                    <?php echo esc_html($contact_address_5); ?>
+                    <?php echo esc_html($contact_address_6); ?>
+                </span>
                 <ul class="social-links menu  footer-menu align-center">
                     <?php foreach ($social_icons as $key => $icon_class) : ?>
                         <?php if (!empty($socials[$key])) : ?>

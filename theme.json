@@ -5,73 +5,17 @@
       "custom": false,
       "customGradient": false,
       "defaultPalette": false,
-      "palette": [
-        {
-          "slug": "primary",
-          "name": "Primary",
-          "color": "#1779ba"
-        },
-        {
-          "slug": "secondary",
-          "name": "Secondary",
-          "color": "#767676"
-        },
-        {
-          "slug": "light-gray",
-          "name": "Light-gray",
-          "color": "#e6e6e6"
-        },
-        {
-          "slug": "medium-gray",
-          "name": "Medium-gray",
-          "color": "#cacaca"
-        },
-        {
-          "slug": "dark-gray",
-          "name": "Dark-gray",
-          "color": "#8a8a8a"
-        },
-        {
-          "slug": "theme-color-1",
-          "name": "Theme-color-1",
-          "color": "#ADD6C2"
-        },
-        {
-          "slug": "theme-color-2",
-          "name": "Theme-color-2",
-          "color": "#525D8D"
-        },
-        {
-          "slug": "theme-color-3",
-          "name": "Theme-color-3",
-          "color": "#DEE8F1"
-        },
-        {
-          "slug": "theme-color-4",
-          "name": "Theme-color-4",
-          "color": "#8C3C40"
-        },
-        {
-          "slug": "white",
-          "name": "White",
-          "color": "#fefefe"
-        },
-        {
-          "slug": "black",
-          "name": "Black",
-          "color": "#0a0a0a"
-        }
-      ],
+      "defaultGradients": false,
       "gradients": [
         {
           "slug": "primary",
           "name": "Primary Light → Dark",
-          "gradient": "linear-gradient(135deg, #3fa1e2, #005192)"
+          "gradient": "linear-gradient(135deg, #463a70, #000020)"
         },
         {
           "slug": "secondary",
           "name": "Secondary Light → Dark",
-          "gradient": "linear-gradient(135deg, #9e9e9e, #4e4e4e)"
+          "gradient": "linear-gradient(135deg, #ffd528, #d78500)"
         },
         {
           "slug": "light-gray",
@@ -91,50 +35,87 @@
         {
           "slug": "theme-color-1",
           "name": "Theme-color-1 Light → Dark",
-          "gradient": "linear-gradient(135deg, #d5feea, #85ae9a)"
+          "gradient": "linear-gradient(135deg, #473a70, #000020)"
         },
         {
           "slug": "theme-color-2",
           "name": "Theme-color-2 Light → Dark",
-          "gradient": "linear-gradient(135deg, #7a85b5, #2a3565)"
-        },
-        {
-          "slug": "theme-color-3",
-          "name": "Theme-color-3 Light → Dark",
-          "gradient": "linear-gradient(135deg, #ffffff, #b6c0c9)"
-        },
-        {
-          "slug": "theme-color-4",
-          "name": "Theme-color-4 Light → Dark",
-          "gradient": "linear-gradient(135deg, #b46468, #641418)"
+          "gradient": "linear-gradient(135deg, #287628, #002600)"
         },
         {
           "slug": "primary-secondary",
           "name": "Primary → Secondary",
-          "gradient": "linear-gradient(135deg, #1779ba, #767676)"
+          "gradient": "linear-gradient(135deg, #1e1248, #ffad00)"
         },
         {
           "slug": "secondary-theme-color-1",
           "name": "Secondary → Theme-color-1",
-          "gradient": "linear-gradient(135deg, #767676, #ADD6C2)"
+          "gradient": "linear-gradient(135deg, #ffad00, #1f1248)"
         },
         {
           "slug": "primary-theme-color-1",
           "name": "Primary → Theme-color-1",
-          "gradient": "linear-gradient(135deg, #1779ba, #ADD6C2)"
+          "gradient": "linear-gradient(135deg, #1e1248, #1f1248)"
         }
       ],
-      "defaultGradients": false
+      "palette": [
+        {
+          "slug": "primary",
+          "name": "Primary",
+          "color": "#1e1248"
+        },
+        {
+          "slug": "secondary",
+          "name": "Secondary",
+          "color": "#ffad00"
+        },
+        {
+          "slug": "light-gray",
+          "name": "Light-gray",
+          "color": "#e6e6e6"
+        },
+        {
+          "slug": "medium-gray",
+          "name": "Medium-gray",
+          "color": "#cacaca"
+        },
+        {
+          "slug": "dark-gray",
+          "name": "Dark-gray",
+          "color": "#8a8a8a"
+        },
+        {
+          "slug": "theme-color-1",
+          "name": "Theme-color-1",
+          "color": "#1f1248"
+        },
+        {
+          "slug": "theme-color-2",
+          "name": "Theme-color-2",
+          "color": "#004E00"
+        },
+        {
+          "slug": "white",
+          "name": "White",
+          "color": "#fefefe"
+        },
+        {
+          "slug": "black",
+          "name": "Black",
+          "color": "#0a0a0a"
+        }
+      ]
     },
-    "core": {
-      "gradients": false
+    "layout": {
+      "contentSize": "1000px",
+      "wideSize": "1200px"
     },
     "typography": {
       "fontFamilies": [
         {
           "slug": "base",
           "name": "Base",
-          "fontFamily": "'Nunito Sans', Helvetica, Roboto, Arial, sans-serif"
+          "fontFamily": "'Poppins', Helvetica, Roboto, Arial, sans-serif"
         },
         {
           "slug": "mono",
@@ -144,11 +125,20 @@
       ]
     },
     "border": {
-      "radius": "0.5rem"
+      "radius": "0.8rem",
+      "customRadius": false,
+      "defaultRadius": "0.5rem"
     },
-    "layout": {
-      "contentSize": "1000px",
-      "wideSize": "1200px"
+    "blocks": {
+      "core/media-text": {
+        "custom": {
+          "allowedWidths": {
+            "one-third": "33%",
+            "half": "50%",
+            "two-thirds": "66%"
+          }
+        }
+      }
     }
   }
 }

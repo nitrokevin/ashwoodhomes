@@ -49,7 +49,7 @@ if ( ! function_exists( 'foundationpress_top_bar_r' ) ) {
 			array(
 				'container'      => false,
 				'menu_class'     => 'dropdown menu desktop-menu align-right ',
-				'items_wrap'     => '<ul id="%1$s" class="%2$s" data-dropdown-menu>%3$s</ul>',
+				'items_wrap'     => '<ul id="%1$s" class="%2$s"  data-smooth-scroll data-animation-easing="swing" data-animation-duration="1000">%3$s</ul>',
 				'theme_location' => 'top-bar-r',
 				'depth'          => 3,
 				'fallback_cb'    => false,
@@ -58,6 +58,43 @@ if ( ! function_exists( 'foundationpress_top_bar_r' ) ) {
 		);
 	}
 }
+// Add button and color classes from li + rel (XFN) to <a>
+add_filter( 'nav_menu_link_attributes', function( $atts, $item, $args ) {
+    if ( isset( $args->theme_location ) && $args->theme_location === 'top-bar-r' ) {
+
+        $all_classes = [];
+
+        // 1) Copy button/color classes from li
+        $li_classes = (array) $item->classes;
+        $allowed = [ 'button', 'hollow', 'primary', 'secondary', 'success', 'alert', 'warning' ];
+        foreach ( $li_classes as $c ) {
+            if ( in_array( $c, $allowed, true ) ) {
+                $all_classes[] = $c;
+            }
+        }
+
+        // 2) Include any rel/XFN classes
+        if ( ! empty( $item->xfn ) ) {
+            $rel_classes = explode( ' ', $item->xfn );
+            foreach ( $rel_classes as $c ) {
+                if ( in_array( $c, $allowed, true ) ) {
+                    $all_classes[] = $c;
+                }
+            }
+        }
+
+        // 3) Merge with existing classes on <a>
+        if ( ! empty( $atts['class'] ) ) {
+            $all_classes = array_merge( explode( ' ', $atts['class'] ), $all_classes );
+        }
+
+        if ( ! empty( $all_classes ) ) {
+            $atts['class'] = implode( ' ', array_unique( $all_classes ) );
+        }
+    }
+
+    return $atts;
+}, 10, 3 );
 /**
  * Desktop navigation - left footer
  *
@@ -119,20 +156,3 @@ if ( ! function_exists( 'foundationpress_mobile_nav' ) ) {
 	}
 }
 
-
-/**
- * Add support for buttons in the top-bar menu:
- * 1) In WordPress admin, go to Apperance -> Menus.
- * 2) Click 'Screen Options' from the top panel and enable 'CSS CLasses' and 'Link Relationship (XFN)'
- * 3) On your menu item, type 'has-form' in the CSS-classes field. Type 'button' in the XFN field
- * 4) Save Menu. Your menu item will now appear as a button in your top-menu
-*/
-if ( ! function_exists( 'foundationpress_add_menuclass' ) ) {
-	function foundationpress_add_menuclass( $ulclass ) {
-		$find    = array( '/<a rel="button"/', '/<a title=".*?" rel="button"/' );
-		$replace = array( '<a rel="button" class="button"', '<a rel="button" class="button"' );
-
-		return preg_replace( $find, $replace, $ulclass, 1 );
-	}
-	add_filter( 'wp_nav_menu', 'foundationpress_add_menuclass' );
-}

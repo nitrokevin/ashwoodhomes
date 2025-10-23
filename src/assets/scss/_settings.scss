@@ -72,25 +72,21 @@ $global-font-size: 100%;
 $global-width: rem-calc(1260);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #1779ba,
-  secondary: #767676,
+  primary: #1e1248,
+  secondary: #ffad00,
   success: #3adb76,
   warning: #ffae00,
   alert: #cc4b37,
   light-gray: #e6e6e6,
   medium-gray: #cacaca,
   dark-gray: #8a8a8a,
-  theme-color-1:#ADD6C2,
-  theme-color-2 : #525D8D,
-  theme-color-3: #DEE8F1,
-  theme-color-4: #8C3C40,
+  theme-color-1:#1f1248,
+  theme-color-2:#004E00,
     "white": #fefefe,
     "black":#0a0a0a,
 );
 $theme-color-1:get-color(theme-color-1);
-$theme-color-2 : get-color(theme-color-2);
-$theme-color-3: get-color(theme-color-3);
-$theme-color-4: get-color(theme-color-4);
+$theme-color-2:get-color(theme-color-2);
 $light-gray:  get-color(light-gray);
 $medium-gray:get-color(medium-gray);
 $dark-gray: get-color(dark-gray);
@@ -98,7 +94,7 @@ $black: #0a0a0a;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: $black;
-$body-font-family: 'Nunito Sans', Helvetica, Roboto, Arial, sans-serif;
+$body-font-family: 'Poppins', Helvetica, Roboto, Arial, sans-serif;
 $body-safe-padding: false;
 $body-antialiased: true;
 $global-margin: 1rem;
@@ -106,7 +102,7 @@ $global-padding: 1rem;
 $global-position: 1rem;
 $global-weight-normal: normal;
 $global-weight-bold: bold;
-$global-radius: 0.5rem;
+$global-radius: 0.8rem;
 $global-menu-padding: 0.7rem 1rem;
 $global-menu-nested-margin: 1rem;
 $global-text-direction: ltr;
@@ -126,7 +122,7 @@ $print-hrefs: true;
 $-zf-size: null;
 $breakpoints: (
   "small": 0,
-  "medium": 640px,
+  "medium": 600px,
   "large": 1024px,
   "xlarge": 1200px,
   "xxlarge": 1440px,
@@ -184,8 +180,8 @@ $header-styles: (
   ),
   large: (
     'p' : ('font-size': 16),
-    'h1': ('font-size': 38),
-    'h2': ('font-size': 40),
+    'h1': ('font-size': 26),
+    'h2': ('font-size': 26),
     'h3': ('font-size': 31),
     'h4': ('font-size': 25),
     'h5': ('font-size': 20),
@@ -193,8 +189,8 @@ $header-styles: (
   ),
   xlarge: (
     'p' : ('font-size': 16),
-    'h1': ('font-size': 42),
-    'h2': ('font-size': 40),
+    'h1': ('font-size': 30),
+    'h2': ('font-size': 30),
     'h3': ('font-size': 31),
     'h4': ('font-size': 25),
     'h5': ('font-size': 20),
@@ -457,7 +453,7 @@ $dropdownmenu-padding: $global-menu-padding;
 $dropdownmenu-nested-margin: 0;
 $dropdownmenu-submenu-padding: $dropdownmenu-padding;
 $dropdownmenu-border: 1px solid $medium-gray;
-$dropdown-menu-item-color-active: get-color(primary);
+$dropdown-menu-item-color-active: get-color("white");
 $dropdown-menu-item-background-active: transparent;
 
 // 19. Flexbox Utilities
@@ -883,11 +879,11 @@ $thumbnail-radius: $global-radius;
 // 53. Title Bar
 // -------------
 
-$titlebar-background: $black;
+$titlebar-background: $primary-color;
 $titlebar-color: $white;
-$titlebar-padding: 0.5rem;
+$titlebar-padding:1rem;
 $titlebar-text-font-weight: bold;
-$titlebar-icon-color: $primary-color;
+$titlebar-icon-color: $white;
 $titlebar-icon-color-hover: $medium-gray;
 $titlebar-icon-spacing: 0.25rem;
 

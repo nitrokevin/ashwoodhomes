@@ -4,6 +4,22 @@
      "layout": {
   "contentSize": "1000px",
   "wideSize": "1200px"
-}
+},
+ "border": {
+   "radius": "0.5rem",
+   "customRadius": false,
+   "defaultRadius": "0.5rem"
+ },
+ "blocks": {
+    "core/media-text": {
+      "custom": {
+        "allowedWidths": {
+          "one-third": "33%",
+          "half": "50%",
+          "two-thirds": "66%"
+        }
+      }
+    }
+  }
   }
   }
