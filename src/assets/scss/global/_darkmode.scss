@@ -1,0 +1,51 @@
+// Dark Mode
+
+// Define a custom dark mode mixin
+@mixin dark-mode {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
+@include dark-mode {
+	
+	body{
+		background-color: $black !important;
+		background: $black !important;
+		color:$white;
+	}
+	.front-overlay-hero .hero-overlay{
+		background: linear-gradient(0deg, rgba($black, .8) 0, rgba($black, .5) 100%);
+
+	}
+	.front-overlay-hero::after{
+
+		background: linear-gradient(0deg, $black, scale-color($black, $lightness: 10%) );
+	}
+	.has-medium-gray-background-color:not(.wp-block-media-text.is-style-scaled),
+	.global-content-columns .global-content-column-last {
+		background-color: $dark-gray !important;
+		 color: $white !important;
+		 &:before{
+			background-color: $dark-gray !important;
+			color: $white !important;
+		 }
+	}
+	.has-medium-gray-background-color .wp-block-media-text__content {
+	  color: $white !important;
+
+	  &:before {
+	    background-color: $dark-gray !important;
+	    color: $white !important;
+	  }
+	}
+.off-canvas{
+	background-color: $dark-gray !important;
+	
+}
+	.off-canvas>ul.menu a{
+		 color: $white !important;
+
+	}
+
+}

@@ -159,7 +159,7 @@
 
   .menu-item {
 
-    @include flex-align($x:left, $y:middle);
+    @include flex-align($x:left, $y:top);
 
   }
 

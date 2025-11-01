@@ -334,3 +334,102 @@ add_filter( 'nav_menu_link_attributes', function( $atts, $item, $args, $depth ) 
 
 	return $atts;
 }, 20, 4 );
+
+
+function add_front_template_blocks( $args, $post_type ) {
+	if ( 'page' !== $post_type ) {
+		return $args;
+	}
+
+	// Apply only to pages using the "Front" template
+	$current_id = isset( $_GET['post'] ) ? (int) $_GET['post'] : 0;
+	if ( ! $current_id ) {
+		return $args;
+	}
+
+	$page_template = get_page_template_slug( $current_id );
+	if ( $page_template !== 'front.php' ) {
+		return $args;
+	}
+
+	$args['template'] = [
+		// Header
+		[ 'core/heading', [ 
+			'level' => 1, 
+			'placeholder' => 'Add your page header title…',
+		] ],
+
+		// Columns (80% width main content)
+		[ 'core/columns', [], [
+			[ 'core/column', [ 'width' => '80%' ], [
+				[ 'core/paragraph', [ 'placeholder' => 'Add introductory text here…' ] ],
+			] ],
+		] ],
+
+		// Spacer
+		[ 'core/spacer', [ 'height' => '30px' ] ],
+
+		// Media & Text (left)
+		[ 'core/media-text', [
+			'align' => 'full',
+			'className' => 'is-style-scaled',
+		] ],
+
+		// Spacer
+		[ 'core/spacer', [ 'height' => '30px' ] ],
+
+		// Media & Text (right)
+		[ 'core/media-text', [
+			'align' => 'full',
+			'className' => 'is-style-scaled',
+			'mediaPosition' => 'right',
+		] ],
+
+		// Spacer
+		[ 'core/spacer', [ 'height' => '30px' ] ],
+
+		// ACF carousel block
+		[ 'acf/carousel', [ 'align' => 'full' ] ],
+
+		// 4-column section
+		[ 'core/columns', [], [
+			[ 'core/column', [], [
+				[ 'core/image' ],
+				[ 'core/paragraph', [ 'placeholder' => 'Heading or title…' ] ],
+				[ 'core/paragraph', [ 'placeholder' => 'Supporting text…' ] ],
+			] ],
+			[ 'core/column', [], [
+				[ 'core/image' ],
+				[ 'core/paragraph', [ 'placeholder' => 'Heading or title…' ] ],
+				[ 'core/paragraph', [ 'placeholder' => 'Supporting text…' ] ],
+			] ],
+			[ 'core/column', [], [
+				[ 'core/image' ],
+				[ 'core/paragraph', [ 'placeholder' => 'Heading or title…' ] ],
+				[ 'core/paragraph', [ 'placeholder' => 'Supporting text…' ] ],
+			] ],
+			[ 'core/column', [], [
+				[ 'core/image' ],
+				[ 'core/paragraph', [ 'placeholder' => 'Heading or title…' ] ],
+				[ 'core/paragraph', [ 'placeholder' => 'Supporting text…' ] ],
+			] ],
+		] ],
+
+		// Cover with two columns
+		[ 'core/cover', [], [
+			[ 'core/columns', [], [
+				[ 'core/column', [], [
+					[ 'core/paragraph', [ 'placeholder' => 'Left column content…' ] ],
+				] ],
+				[ 'core/column', [], [
+					[ 'core/paragraph', [ 'placeholder' => 'Right column content…' ] ],
+				] ],
+			] ],
+		] ],
+	];
+
+	$args['template_lock'] = false;
+
+	return $args;
+}
+add_filter( 'register_post_type_args', 'add_front_template_blocks', 10, 2 );

@@ -101,7 +101,7 @@
 .front-overlay-hero {
   position: relative;
   z-index: 0;
- padding: 16rem 2rem 4rem 2rem;
+ padding: 10rem 2rem 3rem 2rem;
   @include xy-grid;
   @include flex-align($x:center, $y:middle);
   @include breakpoint(medium){
@@ -194,7 +194,10 @@
 
   }
 .subtitle{
+  font-size:rem-calc(16);
+  @include breakpoint(medium) {
   font-size:rem-calc(18);
+  }
 }
 
 

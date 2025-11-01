@@ -5,8 +5,6 @@
 @import 'motion-ui';
 @import "../../../node_modules/swiper/swiper-bundle.min.css";
 
-
-
 @include foundation-global-styles;
 //@include foundation-grid;
 //@include foundation-flex-grid;
@@ -68,6 +66,7 @@
 @import "global/gutenberg";
 
 
+
 // Modules
 @import "modules/navigation";
 @import "modules/content";
@@ -88,3 +87,5 @@
 
 // Templates
 @import "templates/front";
+
+@import "global/darkmode";
