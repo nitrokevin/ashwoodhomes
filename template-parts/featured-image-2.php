@@ -14,12 +14,13 @@ if ( has_post_thumbnail( $post->ID ) ) :
         <?php if ( $is_front ) : ?>
              <div class="hero-overlay">
                      <div class="hero-content">
-                        <h1><?php echo esc_html( get_bloginfo( 'name' ) ); ?> community feedback hub</h1>
+                        <h1><?php echo esc_html( get_bloginfo( 'name' ) ); ?></h1>
                         
-                        <a href="<?php echo esc_url( get_theme_mod( 'global_link' ) ); ?>" class="button large secondary">Have your say</a>
+                        <a href="<?php echo esc_url( get_theme_mod( 'global_link' ) ); ?>"  target="_blank"  class="button large secondary hide-for-small-only">Complete Our Survey</a>
                     </div>
                     <div class="hero-tagline">
                         <p class="subtitle"><?php echo esc_html( get_bloginfo( 'description' ) ); ?></p>    
+                          <a href="<?php echo esc_url( get_theme_mod( 'global_link' ) ); ?>" target="_blank" class="button large secondary show-for-small-only">Complete Our Survey</a>
                     </div>
              </div>
         <?php endif; ?>

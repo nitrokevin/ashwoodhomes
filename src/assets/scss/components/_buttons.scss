@@ -1,8 +1,13 @@
 
 .button{
+  @include button-expand(true);
   font-size: 0.9rem;
+  
+     margin-bottom: 0.5rem;
   @include breakpoint(medium){
+    @include button-expand(false);
   font-size: 1.1rem;
+   margin-bottom:$global-margin;
   }
   font-weight: $global-weight-bold;
   &.large{
@@ -10,5 +15,12 @@
      @include breakpoint(large) {
       font-size: 1.25rem;
      }
+  }
+}
+
+.wp-block-button{
+  width:100%;
+  @include breakpoint(medium) {
+   width:unset;
   }
 }

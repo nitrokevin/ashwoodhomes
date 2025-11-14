@@ -187,7 +187,7 @@ $repeater_field = $options_page === 'faqs' ? 'faq_repeater' : ($options_page ===
                         $heading = get_sub_field('header') ?: get_sub_field('name') ?: ucwords(str_replace('_', ' ', $repeater_field));
                         echo '<div class="global-content-column-first cell small-12 medium-4 medium-offset-1" >';
                        
-                        echo '<p>' . esc_html('LOCAL COMMUNITY FEEDBACK') . '</p>';
+                        echo '<p>' . esc_html('QUESTION') . '</p>';
                         echo '<p>' . esc_html($heading) . '</p>';
                         echo '<hr class="bottom-line">';
                         echo '</div>';

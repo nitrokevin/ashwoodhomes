@@ -68,7 +68,10 @@ if ($footer_background_image) {
 							<?php echo esc_html($site_name); ?>
 						<?php endif; ?>
 					</a>
+                  
                   <span class="footer-contact">
+                 <?php  if ($contact_phone) {  echo esc_html($contact_phone) . '<br />'; } ?>
+                  <?php  if ($contact_email) {  echo esc_html($contact_email) . '<br />'; } ?>
                   <?php echo esc_html($contact_address_1); ?>
                     <?php echo esc_html($contact_address_2); ?>
                     <?php echo esc_html($contact_address_3); ?>
@@ -85,6 +88,7 @@ if ($footer_background_image) {
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </ul>
+                  <?php foundationpress_footer_nav_c(); ?>
             </section>
             <section>
                 <?php foundationpress_footer_nav_r(); ?>

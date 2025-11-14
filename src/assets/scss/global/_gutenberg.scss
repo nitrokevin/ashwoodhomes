@@ -12,6 +12,11 @@ $code in $foundation-palette {
     color: color-pick-contrast($code,
         $colors: ($white, $black, $primary-color, $secondary-color),
         $tolerance: $global-color-pick-contrast-tolerance);
+        a:not(.button, .wp-block-button__link) {
+          color: color-pick-contrast($code,
+            $colors: ( $primary-color, $secondary-color),
+            $tolerance: $global-color-pick-contrast-tolerance);
+        }
   }
 
   .has-#{$color}-color {
@@ -23,8 +28,14 @@ $code in $foundation-palette {
     color: color-pick-contrast($code,
       $colors: ($white, $black, $primary-color, $secondary-color),
       $tolerance: $global-color-pick-contrast-tolerance);
-    transition: background-color .25s ease-out,
+    transition: $button-transition,
       color .25s ease-out;
+
+        &:hover,
+        &:focus {
+          background-color: scale-color($code, $lightness: $button-background-hover-lightness) !important;
+
+        }
   }
 
   .wp-block-button__link.has-#{$color}-color {
@@ -74,15 +85,16 @@ $settings in $all-gradients {
   margin-left: calc( -50vw + 50%  );
   margin-right: calc( -50vw + 50% );
   max-width: 100vw;
-  padding:$global-padding 0;
   overflow-x: hidden;
+      @each $breakpoint,
+      $size in $grid-margin-gutters {
+        @include breakpoint($breakpoint) {
+          padding: $global-padding*2 $size;
+        }
+      }
   .wp-block-group__inner-container{
     @include xy-grid-container;
-    @each $breakpoint, $size in $grid-margin-gutters {
-      @include breakpoint($breakpoint) {
-        padding: $global-padding $size;
-      }
-    }
+
   }
 }
 
@@ -157,7 +169,7 @@ $settings in $all-gradients {
   }
 
   &.has-background:not(.is-style-full-bleed){
-    padding:$global-padding;
+    padding:$global-padding*2 $global-padding;
   }
 
 }
@@ -469,7 +481,7 @@ margin-bottom:10rem;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transform: scale(1.15);
+      transform: scale(1.1);
       transition: transform 0.4s ease;
     }
 
@@ -477,7 +489,7 @@ margin-bottom:10rem;
 
       img,
       video {
-        transform: scale(1.25);
+        transform: scale(1.15);
       }
     }
   }
@@ -502,6 +514,10 @@ margin-bottom:10rem;
       content: "";
        border-radius: 0 0 $global-radius $global-radius;
       position: absolute;
+          height: 100%;
+          width: 100%;
+          top: 0;
+          left: 0;
       inset: 0;
       z-index: -1;
           @include breakpoint(medium) {

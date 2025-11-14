@@ -1,4 +1,3 @@
-
 <?php
 require_once get_template_directory() . '/library/colors.php';
 // Helper: Returns array of palette HEX keys for Kirki, with safe fallback.
@@ -494,11 +493,34 @@ new \Kirki\Field\Color_Palette(
 	]
 );
 
+new \Kirki\Field\Checkbox_Switch(
+	[
+		'settings'    => 'dark_mode',
+		'label'       => esc_html__( 'Dark Mode', 'avidd'  ),
+		'description' => esc_html__( '', 'avidd' ),
+		'section'     => 'site_settings_section',
+		'default'     => 'off',
+		'choices'     => [
+			'on'  => esc_html__( 'Enable', 'avidd' ),
+			'off' => esc_html__( 'Disable', 'avidd' ),
+		],
+	]
+);
+
 
 new \Kirki\Field\URL(
 	[
 		'settings'  => 'global_link',
 		'label'     => esc_html__( 'Global Link', 'avidd' ),
+		'section'   => 'global_links_section',
+		'default'   => '',
+		'priority'  => 10,
+	]
+);
+new \Kirki\Field\URL(
+	[
+		'settings'  => 'registration_link',
+		'label'     => esc_html__( 'Registration Link', 'avidd' ),
 		'section'   => 'global_links_section',
 		'default'   => '',
 		'priority'  => 10,
@@ -536,6 +558,32 @@ add_filter( 'nav_menu_link_attributes', function( $atts, $item, $args, $depth ) 
 	$global_link = esc_url( get_theme_mod( 'global_link' ) );
 	if ( isset( $atts['href'] ) && $atts['href'] === '#global_link#' && $global_link ) {
 		$atts['href'] = $global_link;
+	}
+	return $atts;
+}, 10, 4 );
+
+// Shortcode for registration link
+function avidd_registration_link_shortcode() {
+	return esc_url( get_theme_mod( 'registration_link' ) );
+}
+add_shortcode( 'registration_link', 'avidd_registration_link_shortcode' );
+
+// Replace #registration_link# in block and menu output
+add_filter( 'render_block', function( $block_content, $block ) {
+	if ( empty( $block_content ) ) {
+		return $block_content;
+	}
+	$registration_link = esc_url( get_theme_mod( 'registration_link' ) );
+	if ( $registration_link ) {
+		$block_content = str_replace( '#registration_link#', $registration_link, $block_content );
+	}
+	return $block_content;
+}, 10, 2 );
+
+add_filter( 'nav_menu_link_attributes', function( $atts, $item, $args, $depth ) {
+	$registration_link = esc_url( get_theme_mod( 'registration_link' ) );
+	if ( isset( $atts['href'] ) && $atts['href'] === '#registration_link#' && $registration_link ) {
+		$atts['href'] = $registration_link;
 	}
 	return $atts;
 }, 10, 4 );

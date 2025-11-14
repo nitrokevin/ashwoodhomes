@@ -1,5 +1,5 @@
 // Dark Mode
-
+.dark-enabled {
 // Define a custom dark mode mixin
 @mixin dark-mode {
   @media (prefers-color-scheme: dark) {
@@ -9,11 +9,11 @@
 
 @include dark-mode {
 	
-	body{
+
 		background-color: $black !important;
 		background: $black !important;
 		color:$white;
-	}
+	
 	.front-overlay-hero .hero-overlay{
 		background: linear-gradient(0deg, rgba($black, .8) 0, rgba($black, .5) 100%);
 
@@ -48,4 +48,5 @@
 
 	}
 
+}
 }

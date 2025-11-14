@@ -14,6 +14,7 @@ $sticky_header = get_theme_mod('sticky_header', true);
 $fixed_header  = get_theme_mod('fixed_header', true);
 $contained     = get_theme_mod('contained_header', true);
 
+
 ?>
 <!doctype html>
 <html class="no-js" <?php language_attributes(); ?> >
@@ -66,9 +67,9 @@ $contained     = get_theme_mod('contained_header', true);
 
 		<div class="top-bar-right">
 		<?php foundationpress_top_bar_r(); ?>
-			<?php if ( ! $mobile_layout || $mobile_layout === 'topbar' ) : ?>
-				<?php get_template_part( 'template-parts/mobile-top-bar' ); ?>
-			<?php endif; ?>
+				<?php if ( ! get_theme_mod( 'foundationpress_mobile_menu_layout' ) || get_theme_mod( 'foundationpress_mobile_menu_layout' ) === 'topbar' ) : ?>
+					<?php get_template_part( 'template-parts/mobile-top-bar' ); ?>
+				<?php endif; ?>
 		</div>
 	</div>
 	</nav>
