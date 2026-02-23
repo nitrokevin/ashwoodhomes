@@ -24,7 +24,7 @@ function checkCategoryOrder($categories)
     //return new categories
     return $newCategories;
 }
-add_filter( 'block_categories', 'checkCategoryOrder', 99, 1);
+add_filter( 'block_categories_all', 'checkCategoryOrder', 99, 1);
   
 add_action( 'init', 'register_acf_blocks' );
 function register_acf_blocks() {

@@ -23,8 +23,6 @@ require_once( 'library/foundation.php' );
 /** Format comments */
 require_once( 'library/class-foundationpress-comments.php' );
 
-/** Customizer functions */
-require_once( 'library/customizer-functions.php' );
 
 /** Register all navigation menus */
 require_once( 'library/navigation.php' );
@@ -64,7 +62,7 @@ require_once( 'library/colors.php' );
 require_once( 'library/custom-functions.php' );
 
 /** Customizer functions */
-require_once( 'library/customizer-functions.php' );
+require_once( 'library/customizer-native.php' );
 
 /** ACF functions */
 require_once( 'library/acf-functions.php' );
